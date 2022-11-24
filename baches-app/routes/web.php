@@ -23,3 +23,5 @@ Route::view('Admin','Admin')->name('admin');
 Route::view('CrearCuenta','CrearCuenta')->name('crearCuenta');
 
 Route::view('InicioConLog','InicioConLog')->name('inicioConLog');
+
+Route::view('/prueba', 'prueba');
