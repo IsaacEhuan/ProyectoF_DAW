@@ -16,10 +16,10 @@
     <li><a href="{{route('iniciarSesion')}}">Iniciar Secion</a></li>
     <li><a href="{{route('crearUsuario')}}">Unirse</a></li>
     @endguest
+    
     @auth
         <li><a href="{{route('salir')}}">Salir</a></li>
     @endauth
 </ul>
-@include('nosotros')
 
 
