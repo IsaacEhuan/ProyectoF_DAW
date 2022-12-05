@@ -14,7 +14,7 @@ class UsuarioController extends Controller
         if(Auth::guest()){
             return view('usuarios.iniciarSesion');
         }else{
-            return view('inicio');
+            return view('casa');
         }
     }
 
@@ -35,7 +35,7 @@ class UsuarioController extends Controller
         if (Auth::attempt($credenciales)) {
             $request->session()->regenerate();
             
-            return "<h1>Autenticado</h1>";
+            return redirect(route('casa'));
         }
         $resultado = Auth::attempt($credenciales);
         return "<h1>Algo salio mal</h1>";
@@ -45,7 +45,7 @@ class UsuarioController extends Controller
 
     public function crearUsuario(){
         if(Auth::check()){
-            return view('inicio');
+            return redirect(route('casa'));
         }else{
             return view('usuarios.crearUsuario');
         }
@@ -64,7 +64,7 @@ class UsuarioController extends Controller
         $credenciales["password"] =$request->contrasena;
         if (Auth::attempt($credenciales)) {
             $request->session()->regenerate();
-            return "<h1>Autenticado</h1>";
+            return redirect(route('casa'));
         }
         return "<h1>Algo salio mal</h1>";
     }
