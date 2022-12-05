@@ -13,7 +13,7 @@
         @error('nombre')
             <p class="alert alert-danger" role="alert">* {{$message}}</p>
         @enderror
-
+    
         <div class="mb-4">
             <label for="email" class="form-label">Correo</label>
             <input type="email" name="email" id="" class="form-control">
