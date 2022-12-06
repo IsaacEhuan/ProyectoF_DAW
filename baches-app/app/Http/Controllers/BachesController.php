@@ -30,7 +30,7 @@ class BachesController extends Controller
         $bache->imagen = $url_imagen;
         $bache->fecha_creacion = date('Y-m-d H:i:s');
         $bache->save();
-        return redirect(route('casa'));
+        return Redirect::to($request->request->get('http_referrer'));
     }
 
     public function editarBache($id){
