@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BachesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\UsuarioController;
@@ -23,6 +24,8 @@ Route::get('/inicio',function(){
 });
 
 
+Route::get('/casa',[InicioController::class, 'paginaPrincipal'])->name('casa');
+
 //***--Usuarios--***
 
 //Iniciar sesion-------
@@ -43,6 +46,20 @@ Route::get('/unirse',[UsuarioController::class,'crearUsuario'])->name('crearUsua
 Route::post('/unirse',[UsuarioController::class,'createUsuario'])->name('crearUsuario');
 
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+//***--Baches--***
+
+
+//Crear Bache
+
+Route::get('/baches/crear', [ BachesController::class, 'crearBache'])->name('crearBache');
+
+Route::post('/baches/crear',[ BachesController::class, 'createBache'])->name('crearBache');
+
+
