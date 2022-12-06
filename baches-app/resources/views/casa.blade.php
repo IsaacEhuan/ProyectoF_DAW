@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 @include('casaNavegador')
-<div style="display: flexbox; flex-direction: column;">
+<div>
     <div>
     @foreach ($baches as $bache)
-    <div>
+    <div style="border: 1px black dotted; width:300px">
         <img src="{{$bache->imagen}}" style="height:250px">
         <div>{{$bache->fecha_creacion}}</div>
         <div>{{$bache->nombre}}</div>
@@ -15,22 +15,30 @@
             <h3>Resuelto</h3>   
         @endif
 
+        @if($bache->nombre == Auth::user()->nombre ||Auth::user()->admin)
+        <a href="{{route('modificarBache', $bache->id)}}"> Modificar</a>
+        @endif
+
+
+
         <div>{{$bache->descripcion}}</div>
 
     </div>
     @endforeach
     </div>
 
-    <div id="mapa" style="width: 500px; height:500px">
+    <div id="mapaBaches" style="width: 500px; height:500px">
     </div>
 </div>
+
+<!--Script para que funcione el mapa| NO TOCAR-->
 <script>
     const baches = <?php  echo json_encode($baches) ?>;
     console.log(baches);
 
-    function iniciarMapa() {
+    function iniciarMapaB() {
       const meridaCoordenadas = { lat: {{20.9753700}}, lng:-89.6169600 };
-      const mapa = new google.maps.Map(document.getElementById("mapa"), {
+      const mapaB = new google.maps.Map(document.getElementById("mapaBaches"), {
         zoom: 12,
         center: meridaCoordenadas,
       });
@@ -38,21 +46,15 @@
         var latitud= bache['latitud'];
         var longitud= bache['longitud'];
         const coordenadas = { lat:latitud, lng:longitud};
-        const marcador = new google.maps.Marker({
+        const marcadorB = new google.maps.Marker({
             position: coordenadas,
             draggable: false,
-            map: mapa,
+            map: mapaB,
             title: "Ubicación",
         });
-      });
-      const marcador = new google.maps.Marker({
-        position: meridaCoordenadas,
-        draggable: false,
-        map: mapa,
-        title: "Ubicación",
       });
     }
     
     </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=&callback=iniciarMapa"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=&callback=iniciarMapaB"></script>
     

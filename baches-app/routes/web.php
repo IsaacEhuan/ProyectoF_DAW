@@ -58,3 +58,10 @@ Route::get('/baches/crear', [ BachesController::class, 'crearBache'])->name('cre
 
 Route::post('/baches/crear',[ BachesController::class, 'createBache'])->name('crearBache');
 
+
+
+//Editar Bache
+Route::get('/baches/editar/{id}',[BachesController::class, 'editarBache'])->name('modificarBache');
+
+Route::put('/baches/editar/',[BachesController::class, 'updateBache'])->name('modificarBache');
+
