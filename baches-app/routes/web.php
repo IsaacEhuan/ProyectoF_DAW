@@ -42,3 +42,7 @@ Route::get('/unirse',[UsuarioController::class,'crearUsuario'])->name('crearUsua
 
 Route::post('/unirse',[UsuarioController::class,'createUsuario'])->name('crearUsuario');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
