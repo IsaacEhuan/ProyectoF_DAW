@@ -35,7 +35,7 @@ class UpdateBache extends FormRequest
         return [
             'id_usuario'=>'required',
             'id'=>'required',
-            'imagen'=>'required|image|max:5120',
+            'imagen'=>'image|max:5120',
             'latitud'=>'required|numeric',
             'longitud'=>'required|numeric',
             'descripcion'=>'required|max:300'
