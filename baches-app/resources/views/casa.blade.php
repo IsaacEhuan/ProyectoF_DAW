@@ -16,7 +16,7 @@
         @endif
 
         @if($bache->nombre == Auth::user()->nombre ||Auth::user()->admin)
-        <a href="{{route('modificarBache', $bache->id)}}"> Modificar</a>
+        <a href="baches/editar/{{ $bache->id}}"> Modificar</a>
         @endif
 
 
