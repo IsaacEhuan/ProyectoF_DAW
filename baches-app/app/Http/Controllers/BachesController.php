@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateBache;
+use App\Http\Requests\UpdateBache;
 use App\Models\Bache;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class BachesController extends Controller
@@ -29,6 +30,37 @@ class BachesController extends Controller
         $bache->imagen = $url_imagen;
         $bache->fecha_creacion = date('Y-m-d H:i:s');
         $bache->save();
-        return redirect(route('casa'));
+        return Redirect::to($request->request->get('http_referrer'));
+    }
+
+    public function editarBache($id){
+        
+        if(Auth::check()){
+        $bache = Bache::find($id);
+        if(Auth::user()->admin){
+            return view('baches.modificarBache', ['bache'=>$bache]);
+        }
+        if(Auth::user()->id ==$bache->id_usuario){
+            return view('baches.modificarBache', ['bache'=>$bache]);
+        }
+        return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
+        
+    }
+
+    public function updateBache(UpdateBache $request){
+        $imagen = $request->file('imagen')->store('public/imagenes');
+
+        $url_imagen = Storage::url($imagen);
+        $bache = Bache::find($request->id);
+
+        $bache->latitud = $request->latitud;
+        $bache->longitud = $request->longitud;
+        $bache->descripcion = $request->descripcion;
+        $bache->imagen = $url_imagen;
+        $bache->update();
+        return Redirect::to($request->request->get('http_referrer'));
     }
 }
