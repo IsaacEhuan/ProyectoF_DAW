@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+@include('casaNavegador');
 
 <div>
     <form action="{{route('crearBache')}}" method="POST" enctype="multipart/form-data">
@@ -37,6 +37,7 @@
           @enderror
         <br>
         <input type="submit" value="Aceptar">
+        <input type="hidden" name="atras" value="{{url()->previous()}}">
     </form>
     
 </div>
