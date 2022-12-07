@@ -16,7 +16,7 @@
         @endif
 
         @if($bache->nombre == Auth::user()->nombre ||Auth::user()->admin)
-        <a href="{{route('modificarBache', $bache->id)}}"> Modificar</a>
+        <a href="baches/editar/{{ $bache->id}}"> Modificar</a>
         @endif
 
 
@@ -35,7 +35,6 @@
 <script>
     const baches = <?php  echo json_encode($baches) ?>;
     console.log(baches);
-
     function iniciarMapaB() {
       const meridaCoordenadas = { lat: {{20.9753700}}, lng:-89.6169600 };
       const mapaB = new google.maps.Map(document.getElementById("mapaBaches"), {
@@ -57,4 +56,3 @@
     
     </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=&callback=iniciarMapaB"></script>
-    

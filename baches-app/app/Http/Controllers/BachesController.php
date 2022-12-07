@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
+use function PHPUnit\Framework\isNull;
+
 class BachesController extends Controller
 {
     public function crearBache(){
@@ -51,15 +53,18 @@ class BachesController extends Controller
     }
 
     public function updateBache(UpdateBache $request){
-        $imagen = $request->file('imagen')->store('public/imagenes');
-
-        $url_imagen = Storage::url($imagen);
         $bache = Bache::find($request->id);
 
+        if(!isNull($request->file('imagen'))){
+            $imagen = $request->file('imagen')->store('public/imagenes');
+            $url_imagen = Storage::url($imagen);
+            $bache->imagen = $url_imagen;
+        }
+       
         $bache->latitud = $request->latitud;
         $bache->longitud = $request->longitud;
         $bache->descripcion = $request->descripcion;
-        $bache->imagen = $url_imagen;
+        
         $bache->update();
         return Redirect::to($request->request->get('http_referrer'));
     }

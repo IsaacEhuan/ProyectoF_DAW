@@ -8,8 +8,8 @@
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="id_usuario" value="{{$bache->id_usuario}}">
         <input type="hidden" name="id" value="{{$bache->id}}">
-        
-        <label for="imagen">Imgen Actual</label>
+
+        <label for="imagen">Imagen Actual</label>
         <img src="{{$bache->imagen}}" style="width: 250px">
         <input type="file" name="imagen" id="imagen" accept="image/*">
         @error('imagen')
@@ -43,6 +43,7 @@
         <input type="submit" value="Aceptar">
         
     </form>
+     
     <a href="{{ url()->previous() }}">Atras</a>
 </div>
 

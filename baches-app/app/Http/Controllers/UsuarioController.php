@@ -19,15 +19,15 @@ class UsuarioController extends Controller
     }
 
     //Para autenticar se necesitan hacer algunos cambios
-    //        -- App\Http\Controllers\AutenticarUsuario
+           //App\Http\Controllers\AutenticarUsuario
     // cambiar proyecto\vendor\laravel\framework\src\Illuminate\Auth\Authenticatable.php
     //De otro modo no se autenticara a nadie
     /*
      public function getAuthPassword()
     {
         return $this->contrasena;
-    }
-    */
+    }*/
+    
     public function autenticarUsuario(AutenticarUsuario $request){
         $credenciales = array();
         $credenciales["email"] =$request->email;
