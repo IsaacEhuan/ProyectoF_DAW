@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="submit" class="btn btn-warning btn-sm text-white">Registrar</button>
                 </div>
 
                 <div class="my-3 text-center">
