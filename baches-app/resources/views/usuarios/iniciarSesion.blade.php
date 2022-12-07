@@ -6,7 +6,7 @@
 
 
 <div class="container mt-5">
-    <div class="row" style="min-height: 85vh;">
+    <div class="row" style="min-height: 75vh;">
 
         <div class="col border border-primary rounded-5">
             <!--MAPA-->
@@ -19,7 +19,7 @@
 
             <form method="POST" action="{{route('iniciarSesion')}}">
                 @csrf
-                <div class="mb-5">
+                <div class="mb-3">
                     <label for="email">Correo</label>
                     <input type="email" name="email" id="email" class="form-control">
                 </div>
@@ -27,7 +27,7 @@
                     <p class="alert alert-danger">{{$message}}</p>
                 @enderror
 
-                <div class="mb-5">
+                <div class="mb-3">
                     <label for="contrasena">Contraseña</label>
                     <input type="password" name="contrasena" id="contrasena" class="form-control">
                 </div>

@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 
 
-<div>
-    <h1 class="fw-bolt text-center py-1">BACHES-APP</h1>
+<div class="navbar navbar-expand-lg" style="background: #5DADE2;">
+    <div class="container-md">
 
-    <ul>
-        @guest
-        <a class="justify-content-end" href="{{route('iniciarSesion')}}" style="text-decoration: none;">Iniciar Sesión</a>
+        <h1 class="fw-bolt text-center py-1" style="color:white">BACHES-APP</h1>
 
-        <a class="sr-only sr-only-focusable" href="{{route('crearUsuario')}}" style="text-decoration: none;">Unirse</a>
-        @endguest
+        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
 
-        @auth
-        <li><a href="{{route('salir')}}">Salir</a></li>
-        @endauth
-    </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    @guest
+                    <a class="nav-link active" aria-current="page" href="{{route('iniciarSesion')}}" style="font-weight: bold; color:#FDFEFE; font-size:large">Iniciar Sesión</a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{route('crearUsuario')}}" style="font-weight: bold; color:#FDFEFE">Unirse</a>
+                    @endguest
+                </li>
+
+                @auth
+                <li><a href="{{route('salir')}}">Salir</a></li>
+                @endauth
+            </ul>
+        </div>
+    </div>
 </div>
 
 @auth
