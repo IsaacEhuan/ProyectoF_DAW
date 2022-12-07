@@ -32,7 +32,8 @@
             <h3>Resuelto</h3>   
         @endif
         </td>
-        <td><img src="{{$bache->imagen}}" style="height:50px"></td>
+        <td><img src="{{$bache->imagen}}" style="height:50px"><br>
+        </td>
         <td>{{$bache->latitud}}</td>
         <td>{{$bache->longitud}}</td>
 
@@ -45,6 +46,7 @@
     </table>
     <div>{!!$baches->links()!!}</div>
     <form>
+    <a href="{{route('descargar')}}">Descargar Reporte</a>
     <div id="mapaBaches" style="width: 500px; height:500px">
     </div>
 </div>

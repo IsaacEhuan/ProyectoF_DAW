@@ -79,3 +79,8 @@ Route::get('/baches/eliminar/{id}', [BachesController::class, 'eliminarBache'])-
 Route::delete('/baches/eliminar/', [BachesController::class, 'deleteBache'])->name('eliminarBache');
 
 Route::delete('/baches',[ BachesController::class, 'adminDeleteBaches']) ->name('tablaBaches');
+
+
+//Descargar Archivo
+
+Route::get('baches/descargar',[ BachesController::class, 'reporteBaches'] )->name('descargar');
