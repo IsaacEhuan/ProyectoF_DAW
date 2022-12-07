@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ADeleteBache;
+use App\Http\Requests\BuscarBache;
 use App\Http\Requests\CreateBache;
 use App\Http\Requests\DeleteBache;
 use App\Http\Requests\ResueltoBache;
@@ -171,6 +172,12 @@ class BachesController extends Controller
             header('Content-Transfer-Encoding: binary');
             print $tabla;
         }
+
+    }
+
+    public function buscarBache(BuscarBache $request){
+        $baches = DB::select("SELECT * FROM pagina_principal WHERE descripcion LIKE '%$request->descripcion%'");
+        return view('baches.usuarioBaches', ['baches'=>$baches]);
 
     }
 

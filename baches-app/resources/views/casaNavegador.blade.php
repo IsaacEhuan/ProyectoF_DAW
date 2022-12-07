@@ -17,3 +17,4 @@
 @endif
 @endauth
 </ul>
+@include('baches.buscarBache')

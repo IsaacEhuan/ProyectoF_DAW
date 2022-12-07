@@ -25,6 +25,7 @@
 
     </div>
     @endforeach
+
     {{ $baches->links() }}
     </div>
 
