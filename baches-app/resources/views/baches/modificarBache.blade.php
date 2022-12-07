@@ -11,7 +11,7 @@
         <input type="hidden" name="atras" value="{{url()->previous()}}">
         
         <label for="imagen">Imgen Actual</label>
-        <img src="{{$bache->imagen}}" style="width: 250px">
+        <img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="width: 250px">
         <input type="file" name="imagen" id="imagen" accept="image/*">
         @error('imagen')
             <p class="alert alert-danger" role="alert">* {{$message}}</p>

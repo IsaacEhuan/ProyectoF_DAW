@@ -32,7 +32,7 @@
             <h3>Resuelto</h3>   
         @endif
         </td>
-        <td><img src="{{$bache->imagen}}" style="height:50px"></td>
+        <td><img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:50px"></td>
         <td>{{$bache->latitud}}</td>
         <td>{{$bache->longitud}}</td>
 

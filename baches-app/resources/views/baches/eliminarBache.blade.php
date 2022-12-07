@@ -7,7 +7,7 @@
         @method('DELETE')
         <h1>Estas seguro que quires eliminar el bache?</h1>
         <div style="border: 1px black dotted; width:300px">
-            <img src="{{$bache->imagen}}" style="height:250px">
+            <img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
             <div>{{$bache->fecha_creacion}}</div>
     
             @if($bache->estado==0)

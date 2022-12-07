@@ -38,6 +38,7 @@ class BachesController extends Controller
         $usuario = Auth::user()->id;
         $baches = DB::select(" CALL `baches_usuario` ($usuario)");
         return view('baches.usuarioBaches', ['baches'=>$baches]);
+        //return $baches;
     }
 
 
