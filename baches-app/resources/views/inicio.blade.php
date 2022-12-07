@@ -11,7 +11,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     @guest
-                    <a class="nav-link active" aria-current="page" href="{{route('iniciarSesion')}}" style="font-weight: bold; color:#FDFEFE; font-size:large">Iniciar Sesión</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('iniciarSesion')}}" style="font-weight: bold; color:#FDFEFE">Iniciar Sesión</a>
                 </li>
 
                 <li class="nav-item">
