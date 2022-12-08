@@ -50,6 +50,13 @@ Route::post('/unirse',[UsuarioController::class,'createUsuario'])->name('crearUs
 
 
 //***--Baches--***
+Route::get('/baches',[ BachesController::class, 'tablaBaches']) ->name('tablaBaches');
+
+
+Route::get('/baches/mios',[ BachesController::class, 'usuarioBaches']) ->name('misBaches');
+
+Route::post('/baches/mios',[ BachesController::class, 'resolverBaches']) ->name('misBaches');
+
 
 
 //Crear Bache
@@ -60,8 +67,15 @@ Route::post('/baches/crear',[ BachesController::class, 'createBache'])->name('cr
 
 
 
-//Editar Bache
+//Editar Bache FAVOR DE NO TOCAR NADA DE ESTO, Que da problemas por alguna razon
 Route::get('/baches/editar/{id}',[BachesController::class, 'editarBache'])->name('modificarBache');
 
 Route::put('/baches/editar/',[BachesController::class, 'updateBache'])->name('modificarBache');
 
+
+//Eliminar Bache
+Route::get('/baches/eliminar/{id}', [BachesController::class, 'eliminarBache'])->name('eliminarBache');
+
+Route::delete('/baches/eliminar/', [BachesController::class, 'deleteBache'])->name('eliminarBache');
+
+Route::delete('/baches',[ BachesController::class, 'adminDeleteBaches']) ->name('tablaBaches');

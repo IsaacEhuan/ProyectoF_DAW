@@ -18,7 +18,7 @@ class InicioController extends Controller
     }
 
     public function paginaPrincipal(){
-        $baches = DB::select('SELECT * FROM `pagina_principal` ');
+        $baches = DB::table('pagina_principal')->orderBy('fecha_creacion','desc')->cursorPaginate(15);
         return view('casa', ['baches'=>$baches]);
     }
 }

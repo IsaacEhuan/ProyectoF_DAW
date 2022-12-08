@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-
+@include('casaNavegador')
 <div>
     <form action="{{route('modificarBache')}}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -9,8 +9,15 @@
         <input type="hidden" name="id_usuario" value="{{$bache->id_usuario}}">
         <input type="hidden" name="id" value="{{$bache->id}}">
 
+
         <label for="imagen">Imagen Actual</label>
         <img src="{{$bache->imagen}}" style="width: 250px">
+
+        <input type="hidden" name="atras" value="{{url()->previous()}}">
+        
+        <label for="imagen">Imgen Actual</label>
+        <img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="width: 250px">
+
         <input type="file" name="imagen" id="imagen" accept="image/*">
         @error('imagen')
             <p class="alert alert-danger" role="alert">* {{$message}}</p>
@@ -31,6 +38,13 @@
         @error('longitud')
         <p class="alert alert-danger" role="alert">* {{$message}}</p>
         @enderror
+        <label for="estado">Resuelto</label>
+        @if ($bache->estado)
+          <input type="checkbox" name="estado" checked> 
+        @else
+          <input type="checkbox" name="estado"> 
+        @endif
+       
 
 
         <label for="descripcion">Descripcion</label>
