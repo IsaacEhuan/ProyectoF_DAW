@@ -89,8 +89,7 @@ class BachesController extends Controller
 
     public function updateBache(UpdateBache $request){
         $bache = Bache::find($request->id);
-
-        if(!isNull($request->file('imagen'))){
+        if($request->file('imagen')){
             $imagen = $request->file('imagen')->store('public/imagenes');
             $url_imagen = Storage::url($imagen);
             $bache->imagen = $url_imagen;
