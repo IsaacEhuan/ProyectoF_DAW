@@ -1,46 +1,61 @@
 <!DOCTYPE html>
 @include('casaNavegador');
 
-<div>
-    <form action="{{route('crearBache')}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <h1>Reportar Bache</h1>
-        
-        <label for="imagen">Foto del Bache</label>
-        <input type="file" name="imagen" id="imagen" accept="image/*">
-        @error('imagen')
-            <p class="alert alert-danger" role="alert">* {{$message}}</p>
-        @enderror
-        <br>
 
-        <label for="latitud">Latitud</label>
-        <input name="latitud" id="lat" value="20.9753700">
+  <div class="row">
+    <div class="col-6">
+      <form action="{{route('crearBache')}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3">
+        <h1 style="text-align: center;">Reportar Bache</h1>
+        </div>
+
+
+        <div class="mb-3">
+        <label for="latitud" style="padding-left:50px;">Latitud</label>
+        <input name="latitud" id="lat" value="20.9753700" class="form-control" type="text" readonly style="width: 250px;">
         <br>
+        </div>
         @error('latitud')
         <p class="alert alert-danger" role="alert">* {{$message}}</p>
         @enderror
 
-        <label for="longitud">Longitud</label>
-        <input name="longitud" id="lng" value="-89.6169600">
+        <label for="longitud" style="padding-left:50px;">Longitud</label>
+        <input name="longitud" id="lng" value="-89.6169600" class="form-control" type="text" readonly style="width: 250px;">
         <br>
-        <div id="mapa" style="width:500px; height: 500px;"></div>
-        @error('longitud')
-        <p class="alert alert-danger" role="alert">* {{$message}}</p>
-        @enderror
 
+        <div class="mb-3">
+        <label for="formFileSm" class="form-label" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">CARGAR FOTO DEL BACHE</label>
+        <input type="file" name="imagen" id="imagen" accept="image/*" for="exampleFormControlFile1" class="form-control form-control-sm" id="formFileSm" >
+        @error('imagen')
+            <p class="alert alert-danger" role="alert">* {{$message}}</p>
+        @enderror
+        <br>
+        </div>
+        
 
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion"></textarea>
-        <div>⚠️300 letras<div>
+        <textarea name="descripcion" class="form-control" id="textAreaExample" rows="3"></textarea>
+        <h5 style="text-align: right;">⚠️300 letras<h5>
           @error('descripcion')
           <p class="alert alert-danger" role="alert">* {{$message}}</p>
           @enderror
         <br>
-        <input type="submit" value="Aceptar">
+        <input type="submit" class="btn btn-primary btn-lg btn-rounded float-end">
         <input type="hidden" name="atras" value="{{url()->previous()}}">
-    </form>
+      </form>
+    </div>
+      
+      <div class="col-4">
+    <div id="mapa" style="width:500px; height: 500px;"></div>
+        @error('longitud')
+        <p class="alert alert-danger" role="alert">* {{$message}}</p>
+        @enderror
+    </div>
     
-</div>
+      </div>
+    </div>
+  </div>
 
 
 <script>

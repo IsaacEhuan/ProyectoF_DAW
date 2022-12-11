@@ -26,6 +26,8 @@ Route::get('/inicio',function(){
 
 Route::get('/casa',[InicioController::class, 'paginaPrincipal'])->name('casa');
 
+
+
 //***--Usuarios--***
 
 //Iniciar sesion-------
@@ -79,3 +81,11 @@ Route::get('/baches/eliminar/{id}', [BachesController::class, 'eliminarBache'])-
 Route::delete('/baches/eliminar/', [BachesController::class, 'deleteBache'])->name('eliminarBache');
 
 Route::delete('/baches',[ BachesController::class, 'adminDeleteBaches']) ->name('tablaBaches');
+
+
+//Descargar Archivo
+
+Route::get('baches/descargar',[ BachesController::class, 'reporteBaches'] )->name('descargar');
+
+
+Route::post('/baches/buscar',[BachesController::class, 'buscarBache'])->name('buscarBache');

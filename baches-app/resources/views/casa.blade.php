@@ -2,54 +2,43 @@
 @include('casaNavegador')
 
 <div class="row">
-  <div class="col-7">
+  <div class="col-6">
+    <div class="row" style="display:inline-flexbox">
+      @foreach ($baches as $bache)
+      <div class="col-sm-5">
+        <div class="card">
+          <div class="card-body">
+            <img class="card-img-top" alt="Card image cap" src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
+              <div class="card-body">
+                <h2 class="card-title">{{$bache->nombre}}<h2>
+                <h5>{{$bache->fecha_creacion}}</h5>
+                @if($bache->estado==0)
+                <h3 style="color: red;">Sin resolver</h3>
+                @else 
+                <h3 style="color:green">Resuelto</h3>   
+                @endif
+                <p class="card-text">{{$bache->descripcion}}</p>
 
-
-<div class="row" style="display:inline-flexbox">
-@foreach ($baches as $bache)
-  <div class="col-sm-5">
-    <div class="card">
-      <div class="card-body">
-      <img class="card-img-top" alt="Card image cap" src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
-      <div class="card-body">
-        <h2 class="card-title">{{$bache->nombre}}<h2>
-        <h5>{{$bache->fecha_creacion}}</h5>
-
-
-        @if($bache->estado==0)
-            <h3 style="color: red;">Sin resolver</h3>
-        @else 
-            <h3 style="color:green">Resuelto</h3>   
-        @endif
-
-        <p class="card-text">{{$bache->descripcion}}</p>
-
-        @if($bache->nombre == Auth::user()->nombre ||Auth::user()->admin)
-        <a class="btn btn-primary" href="baches/editar/{{ $bache->id}}"> Modificar</a>
-        @endif
+                @if($bache->nombre == Auth::user()->nombre ||Auth::user()->admin)
+                <a class="btn btn-primary" href="baches/editar/{{ $bache->id}}"> Modificar</a>
+                @endif
+              </div>
+          </div>
         </div>
+      </div>
+      @endforeach
     </div>
-    
-    </div>
-    </div>
-    @endforeach
-</div>
-</div>
-
-<div class="col">
-<div>
-    <div>
-
-    <a href="{{ $baches->links()}}">j</a> 
-    </div>
-<div class="row">
-  <marquee behavior="" direction="" style="color:red; font-weight:600">¡REPORTA TU BACHE!</marquee>
-</div>
+  </div>
+  <div class="col">
+    {{ $baches->links() }}
+    <marquee behavior="" direction="right" style="color: red;">!DENUNCIA TU BACHE!</marquee>
     <div id="mapaBaches" style="width: 500px; height:500px">
     </div>
+  </div>
 </div>
-</div>
-</div>
+
+
+
 <!--Script para que funcione el mapa| NO TOCAR-->
 <script>
     var baches = <?php  echo json_encode($baches) ?>;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ADeleteBache;
+use App\Http\Requests\BuscarBache;
 use App\Http\Requests\CreateBache;
 use App\Http\Requests\DeleteBache;
 use App\Http\Requests\ResueltoBache;
@@ -89,8 +90,7 @@ class BachesController extends Controller
 
     public function updateBache(UpdateBache $request){
         $bache = Bache::find($request->id);
-
-        if(!isNull($request->file('imagen'))){
+        if($request->file('imagen')){
             $imagen = $request->file('imagen')->store('public/imagenes');
             $url_imagen = Storage::url($imagen);
             $bache->imagen = $url_imagen;
@@ -143,4 +143,48 @@ class BachesController extends Controller
         }
         return redirect(route('tablaBaches'));
     }
+
+
+    public function reporteBaches(){
+        if(Auth::user()->admin){
+            $baches = Bache::all();
+            $tabla='<html><body>';
+            $tabla.='<table>'.
+            "<tr><th>ID</th>
+            <th>ID Usuario</th>
+            <th>Fecha Creacion</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Latitud</th>
+            <th>Longitud</th></tr>";
+            //$tabla.="<tr><td>id</td><td>descripcion</td><td>fecha creacion</td></tr>";
+            foreach($baches as $bache){
+                $tabla.="<tr><td>$bache->id</td>
+                <td>$bache->id_usuario</td>
+                <td>$bache->fecha_creacion</td>
+                <td>$bache->descripcion</td>
+                <td>$bache->estado</td>
+                <td>$bache->latitud</td>
+                <td>$bache->longitud</td></tr>";
+            }
+            $tabla.="</table>";
+            $tabla.='</body></html>';
+
+            header('Content-Type: application/force-download');
+            header('Content-Disposition: attachment; filename="Reporte Baches.xls"');
+            header('Content-Transfer-Encoding: binary');
+            print $tabla;
+        }
+
+    }
+
+    public function buscarBache(BuscarBache $request){
+        $baches = DB::select("SELECT * FROM pagina_principal WHERE descripcion LIKE '%$request->descripcion%'");
+        return view('baches.usuarioBaches', ['baches'=>$baches]);
+
+    }
+
+
+
+
 }

@@ -21,4 +21,6 @@ class InicioController extends Controller
         $baches = DB::table('pagina_principal')->orderBy('fecha_creacion','desc')->cursorPaginate(15);
         return view('casa', ['baches'=>$baches]);
     }
+
+
 }
