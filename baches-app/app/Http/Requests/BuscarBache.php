@@ -27,5 +27,12 @@ class BuscarBache extends FormRequest
         return [
             'descripcion'=>'required|max:50'
         ];
+
+    }
+    public function messages(){
+        return [
+            'descripcion.required'=>'Sin descripción',
+            'descripcion.max'=>'La descripcion debe ser de menos de 50 letras'
+        ];
     }
 }

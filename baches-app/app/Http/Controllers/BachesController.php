@@ -57,7 +57,10 @@ class BachesController extends Controller
         $bache->imagen = $url_imagen;
         $bache->fecha_creacion = date('Y-m-d H:i:s');
         $bache->save();
-        return redirect($request->atras);
+        if(Auth::user()->admin){
+            return redirect(route('tablaBaches'));
+        }
+        return redirect(route('misBaches'));
     }
 
     public function editarBache($id){
@@ -70,9 +73,9 @@ class BachesController extends Controller
         if(Auth::user()->id ==$bache->id_usuario){
             return view('baches.modificarBache', ['bache'=>$bache]);
         }
-        return redirect()->back();
+        return redirect(route('misBaches'));
         }else{
-            return redirect()->back();
+            return redirect(route('casa'));
         }
         
     }

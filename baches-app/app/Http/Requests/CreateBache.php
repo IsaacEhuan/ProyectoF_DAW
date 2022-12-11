@@ -32,4 +32,15 @@ class CreateBache extends FormRequest
             'descripcion'=>'required|max:300'
         ];
     }
+    public function messages(){
+        return [
+            'imagen.image'=>'El archivo ingresado no es una imagen',
+            'imagen.max'=>'La imagen pesa mas de 5MB',
+            'image.required'=>'Debe de ingresar una imagen',
+            'latitud.required'=>'No ha ingresado una latitud',
+            'longitud.required'=>'No ha ingresado una longitud',
+            'descripcion.required'=>'Debe de ingresar una descripción',
+            'descripcion.max'=>'La descripción es demasiodo larga',
+        ];
+    }
 }
