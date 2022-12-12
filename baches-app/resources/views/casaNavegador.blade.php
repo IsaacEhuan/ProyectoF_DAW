@@ -7,18 +7,20 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav">
                 @auth
-                <h2 class="mx-auto" style="width: 450px;">BACHES-APP</h2>
+                <h2 class="mx-auto" style="width: 400px;">BACHES-APP</h2>
                 
-                    
-                    <a class="btn btn-outline-dark" href="{{route('casa')}}" class="nav-item nav-link">Casa</a>
-                    <a class="btn btn-outline-dark" href="{{route('misBaches')}}" class="nav-item nav-link">Mis Baches</a>
-                    <a class="btn btn-outline-dark" href="{{route('crearBache')}}" class="nav-item nav-link">Subir Bache</a></li>
+                    <div style="align-content: center;">                    
+                    <a class="btn btn-outline-primary" href="{{route('casa')}}" class="nav-item nav-link" style="color: white;">Casa</a>
+                    <a class="btn btn-outline-primary" href="{{route('misBaches')}}" class="nav-item nav-link" style="color: white;">Mis Baches</a>
+                    <a class="btn btn-outline-primary" href="{{route('crearBache')}}" class="nav-item nav-link" style="color: white;">Subir Bache</a></li>
                     
                     @if(Auth::user()->admin)
-                    <a class="btn btn-outline-dark" href="{{route('tablaBaches')}}" class="nav-item nav-link">Baches|Tabla</a>
+                    <a class="btn btn-outline-primary" href="{{route('tablaBaches')}}" class="nav-item nav-link" style="color: white;">Baches|Tabla</a>
                     @endif
-                    <a class="btn btn-outline-dark" href="{{route('salir')}}" class="nav-item nav-link">Salir</a>
+                    <a class="btn btn-outline-primary" href="{{route('salir')}}" class="nav-item nav-link" style="color: white;">Salir</a>
                     @endauth
+                    </div>
+
                
             </div>
             <div class="navbar-nav ms-auto">

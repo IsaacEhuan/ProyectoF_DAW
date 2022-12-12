@@ -5,15 +5,15 @@
   </div>
   <div class="row">
     <div class="col-7">
-      <form method="POST" action="{{route('misBaches')}}">
+      <form method="POST " action="{{route('misBaches')}}">
         @csrf
           <div class="row" style="display:inline-flexbox">
             @foreach ($baches as $bache)
-              <div class="col-sm-5">
-                <div class="card">
+              <div class="col-sm-5 ">
+                <div class="card shadow-lg p-3 mb-5 bg-body rounded">
                   <div class="card-body" style="height:auto;;">
                     <img class="card-img-top" alt="Card image cap" src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
-                      <div class="card-body">
+                      <div class="card-body ">
                         <h2 class="card-title">{{$bache->fecha_creacion}}</h2>
                           <h5>Descripción: {{$bache->descripcion}}</h5>
                             @if($bache->estado==0)

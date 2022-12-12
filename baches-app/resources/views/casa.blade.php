@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 @include('casaNavegador')
+<style>
+  @media (max-width: 1250px) {
+  .mapaBaches{
+
+  }
+  }
+</style>
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-7">
     <div class="row" style="display:inline-flexbox">
       @foreach ($baches as $bache)
-      <div class="col-sm-5">
+      <div class="col-lg-5">
         <div class="card">
           <div class="card-body">
             <img class="card-img-top" alt="Card image cap" src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
@@ -29,13 +36,15 @@
       @endforeach
     </div>
   </div>
-  <div class="col">
+  <div class="fixed-top" style="display:flex; margin-left:53vw; margin-top:20vh;">
+    
     {{ $baches->links() }}
-    <marquee behavior="" direction="right" style="color: red;">!DENUNCIA TU BACHE!</marquee>
-    <div id="mapaBaches" style="width: 500px; height:500px">
+    <div sty id="mapaBaches" style="width: 400px; height:400px;border-radius: 25px;" >
     </div>
-  </div>
 </div>
+
+
+
 
 
 
