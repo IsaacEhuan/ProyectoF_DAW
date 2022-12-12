@@ -2,14 +2,15 @@
 
 <div>
 <a class="btn btn-success" href="{{route('descargar')}}">Descargar Reporte</a>
-    <input class="btn btn-danger" type="submit" value="Eliminar Baches">
+    
     <a class="btn btn-primary" href="{{route('crearBache')}}">Agregar Bache</a>
+    <button class="btn btn-danger" onclick="document.getElementById('form').submit()";"value="Eliminar Baches">Eliminar Baches</button>
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
-    <form method="POST" action="{{route('tablaBaches')}}">
+    <form method="POST" action="{{route('tablaBaches')}}"id="form">
     @csrf
     @method('DELETE')
     <p></p>
-    <table class="table table-bordered table-striped mb-0">
+    <table class="table table-bordered table-striped mb-0" >
         <thead class="table-secondary">
         <tr class="d-flex">
             <th class="col-2">Eliminar</th>
