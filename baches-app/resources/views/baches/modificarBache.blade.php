@@ -1,65 +1,71 @@
 <!DOCTYPE html>
 
 @include('casaNavegador')
-<div>
+<div class="row">
+  <div class="col-6">
     <form action="{{route('modificarBache')}}" method="POST" enctype="multipart/form-data">
         @csrf
-        <h1>Editar Bache</h1>
+        <h1 style="text-align:center; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Editar Bache</h1>
         <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="id_usuario" value="{{$bache->id_usuario}}">
         <input type="hidden" name="id" value="{{$bache->id}}">
 
 
-        <label for="imagen">Imagen Actual</label>
-        <img src="{{$bache->imagen}}" style="width: 250px">
-
         <input type="hidden" name="atras" value="{{url()->previous()}}">
-        
-        <label for="imagen">Imgen Actual</label>
+        <div class="mb-3">
+        <label for="imagen">Imagen Actual</label>
         <img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="width: 250px">
+        </div>
 
-        <input type="file" name="imagen" id="imagen" accept="image/*">
+        <div class="mb-4">
+        <input type="file" name="imagen" id="imagen" accept="image/*"  for="exampleFormControlFile1" class="form-control form-control-sm" id="formFileSm" style="width: 500px;">
         @error('imagen')
             <p class="alert alert-danger" role="alert">* {{$message}}</p>
         @enderror
         <br>
+        </div>
 
-        <label for="latitud">Latitud</label>
-        <input name="latitud" id="lat" value="{{$bache->latitud}}">
+        <label for="latitud" style="font-weight: 600;">Latitud</label>
+        <input name="latitud" id="lat" value="{{$bache->latitud}}" class="form-control" type="text" readonly style="width: 250px;">
         <br>
         @error('latitud')
         <p class="alert alert-danger" role="alert">* {{$message}}</p>
         @enderror
 
-        <label for="longitud">Longitud</label>
-        <input name="longitud" id="lng" value="{{$bache->longitud}}">
+        <label for="longitud" style="font-weight: 600">Longitud</label>
+        <input name="longitud" id="lng" value="{{$bache->longitud}}" class="form-control" type="text" readonly style="width: 250px;">
         <br>
-        <div id="mapa" style="width:500px; height: 500px;"></div>
+        
+        <div class="mb-4">
         @error('longitud')
         <p class="alert alert-danger" role="alert">* {{$message}}</p>
         @enderror
-        <label for="estado">Resuelto</label>
+        <label for="estado" style="font-size:x-large;">Resuelto</label>
         @if ($bache->estado)
-          <input type="checkbox" name="estado" checked> 
+          <input class="form-check-input" type="checkbox" name="estado" checked> 
         @else
-          <input type="checkbox" name="estado"> 
+          <input class="form-check-input" type="checkbox" name="estado"> 
         @endif
-       
+        </div>
 
-
+        <div class="mb-4">
         <label for="descripcion">Descripcion</label>
-        <textarea name="descripcion">{{$bache->descripcion}}</textarea>
-        <div>⚠️300 letras<div>
+        <textarea name="descripcion" class="form-control" id="textAreaExample" rows="3">{{$bache->descripcion}}</textarea>
+        <h5 style="text-align: right;">⚠️300 letras<h5>
           @error('descripcion')
           <p class="alert alert-danger" role="alert">* {{$message}}</p>
           @enderror
         <br>
-        <input type="submit" value="Aceptar">
-        
+        </div>
+        <input type="submit" value="Aceptar" class="btn btn-primary">
+        <a href="{{ url()->previous() }}" class="btn btn-secondary">Atras</a>
     </form>
-     
-    <a href="{{ url()->previous() }}">Atras</a>
+  </div>
+  <div class="col">
+    <div id="mapa" style="width:500px; height: 500px;"></div>
+  </div>
 </div>
+
 
 
 <script>
