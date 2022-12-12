@@ -1,32 +1,45 @@
 <!DOCTYPE html>
 
 @include('casaNavegador')
-<div>
+<div class="row">
+  <div class="col" style="text-align: center; margin-left:120px" >
     <form action="{{route('eliminarBache')}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('DELETE')
-        <h1>Estas seguro que quires eliminar el bache?</h1>
-        <div style="border: 1px black dotted; width:300px">
-            <img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
-            <div>{{$bache->fecha_creacion}}</div>
+        <div class="col-sm-8" >
+          <div class="card shadow-lg p-3 mb-5 bg-body rounded">
+          <div class="card-body " style="height:auto; ">
+        <h1 style="text-align:center; font-weight: 700; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">¿Estas seguro que quires eliminar el bache?</h1>
+            <img class="card-img-top" alt="Card image cap" src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:250px">
+            <div class="card-body ">
+            <h2 class="card-title">{{$bache->fecha_creacion}}</h2>
     
             @if($bache->estado==0)
-                <h3>Sin resolver</h3>
+                <h3 style="color:red">Sin resolver</h3>
             @else 
-                <h3>Resuelto</h3>   
+                <h3 style="color:green">Resuelto</h3>   
             @endif
-            <a href="{{route("modificarBache")}}/{{$bache->id}}"> Modificar</a>
-            <div>{{$bache->descripcion}}</div>
-        </div>
+            <h5>{{$bache->descripcion}}</h5>
+            <a href="{{route("modificarBache")}}/{{$bache->id}}" class="btn btn-warning"> Modificar</a>
+            
+        
         <input type="hidden" name=id value="{{$bache->id}}">
         <input type="hidden" name=id_usuario value="{{$bache->id_usuario}}">
         <input type="hidden" name=atras value="{{url()->previous()}}">
-        <input type="submit" value="Aceptar">
-        <a href="{{ url()->previous() }}">Atras</a>
+        <input type="submit" value="Aceptar" class="btn btn-primary">
+        <a href="{{ url()->previous() }}" class="btn btn-secondary">Atras</a>
     </form>
+    </div>
+    </div>
+    </div>
+</div>
+  </div>
+  <div class="col">
+    <div id="mapa" style="width: 500px; height:500px">
+  </div>
     
 </div>
-<div id="mapa" style="width: 500px; height:500px">
+
 
 
 <script>
