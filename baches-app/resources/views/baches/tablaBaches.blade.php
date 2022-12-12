@@ -5,7 +5,7 @@
     
     <a class="btn btn-primary" href="{{route('crearBache')}}">Agregar Bache</a>
     <button class="btn btn-danger" onclick="document.getElementById('form').submit()";"value="Eliminar Baches">Eliminar Baches</button>
-    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+    <div >
     <form method="POST" action="{{route('tablaBaches')}}"id="form">
     @csrf
     @method('DELETE')
@@ -13,36 +13,36 @@
     <table class="table table-bordered table-striped mb-0" >
         <thead class="table-secondary">
         <tr class="d-flex">
-            <th class="col-2">Eliminar</th>
-            <th class="col-2">ID</th>
-            <th class="col-2">ID Usuario</th>
-            <th class="col-2">Fecha Creacion</th>
-            <th class="col-2">Descripcion</th>
-            <th class="col-2">Estado</th>
-            <th class="col-2">Imagen</th>
-            <th class="col-2">Latitud</th>
-            <th class="col-2">Longitud</th>
+            <th class="col-1">Eliminar</th>
+            <th class="col-1">ID</th>
+            <th class="col-1">ID Usuario</th>
+            <th class="col-1">Fecha Creacion</th>
+            <th class="col-1">Descripcion</th>
+            <th class="col-1">Estado</th>
+            <th class="col-1">Imagen</th>
+            <th class="col-1">Latitud</th>
+            <th class="col-1">Longitud</th>
             <th class="col-2"></th>
         </tr>
         </thead>
     @foreach ($baches as $bache)
     <tbody class="table-info">
         <tr class="d-flex">
-        <td class="col-2"><input type="checkbox" name="eliminar[]" value="{{$bache->id}}"></td>
-        <td class="col-2">{{$bache->id}}</td>
-        <td class="col-2">{{$bache->id_usuario}}</td>
-        <td class="col-2">{{$bache->fecha_creacion}}</td>
-        <td class="col-2">{{$bache->descripcion}}</td>
-        <td class="col-2">
+        <td class="col-1"><input type="checkbox" name="eliminar[]" value="{{$bache->id}}"></td>
+        <td class="col-1">{{$bache->id}}</td>
+        <td class="col-1">{{$bache->id_usuario}}</td>
+        <td class="col-1">{{$bache->fecha_creacion}}</td>
+        <td class="col-1">{{$bache->descripcion}}</td>
+        <td class="col-1">
             @if($bache->estado==0)
             <h3 style="color: red;">Sin resolver</h3>
         @else 
             <h3 style="color:green">Resuelto</h3>   
         @endif
         </td >
-        <td class="col-2"><img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:50px"></td>
-        <td class="col-2">{{$bache->latitud}}</td>
-        <td class="col-2">{{$bache->longitud}}</td>
+        <td class="col-1"><img src="http://localhost/ProyectoF_DAW/baches-app/public{{$bache->imagen}}" style="height:50px"></td>
+        <td class="col-1">{{$bache->latitud}}</td>
+        <td class="col-1">{{$bache->longitud}}</td>
 
         <!--Aqui poner alguna imagen en vez del texto -->
         <td class="col-2"> <a class="btn btn-primary" href="{{route("modificarBache")}}/{{$bache->id}}"> Modificar </a> |
@@ -83,7 +83,7 @@
       });
     }
     
-    </script>
+</script>
 
     <style>
         .my-custom-scrollbar {
