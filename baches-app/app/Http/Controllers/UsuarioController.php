@@ -29,18 +29,19 @@ class UsuarioController extends Controller
     }*/
     
     public function autenticarUsuario(AutenticarUsuario $request){
-        $credenciales = array();
-        $credenciales["email"] =$request->email;
-        $credenciales["password"] =$request->contrasena;
-        if (Auth::attempt($credenciales)) {
+        $credentials = $request->validate([
+            'email' => ['required'],
+            'contrasena' => ['required'],
+        ]);
+        $user = Usuario::where('email', $request->email)->first();
+        if($user && $user->contrasena == $request->contrasena){
             $request->session()->regenerate();
-            
             return redirect(route('casa'));
+        }else{
+            return "<h1>Algo salio mal</h1>";
         }
-        $resultado = Auth::attempt($credenciales);
-        return "<h1>Algo salio mal</h1>";
-    }
 
+    }
 
 
     public function crearUsuario(){
@@ -62,11 +63,17 @@ class UsuarioController extends Controller
         $credenciales = array();
         $credenciales["email"] =$request->email;
         $credenciales["password"] =$request->contrasena;
-        if (Auth::attempt($credenciales)) {
+        $user = Usuario::where('email', $request->email)->first();
+        if($user && $user->contrasena == $request->contrasena){
             $request->session()->regenerate();
             return redirect(route('casa'));
+        }else{
+            return "<h1>Algo salio mal</h1>";
         }
-        return "<h1>Algo salio mal</h1>";
+        // if (Auth::attempt($credenciales)) {
+        //     $request->session()->regenerate();
+        //     return redirect(route('casa'));
+        // }
     }
 
 

@@ -25,10 +25,8 @@
                 <h3 style="color:green">Resuelto</h3>   
                 @endif
                 <p class="card-text">{{$bache->descripcion}}</p>
+                <h1>{{$bache->descripcion}}</h1>
 
-                @if($bache->nombre == Auth::user()->nombre ||Auth::user()->admin)
-                <a class="btn btn-primary" href="baches/editar/{{ $bache->id}}"> Modificar</a>
-                @endif
               </div>
           </div>
         </div>

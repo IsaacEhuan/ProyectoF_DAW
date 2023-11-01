@@ -45,13 +45,13 @@ class Usuario extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected function contrasena():Attribute{
-        return new Attribute(
-            set: function($contrasena){
-                return bcrypt($contrasena);
-            }
-        );
-    }
+    // protected function contrasena():Attribute{
+    //     return new Attribute(
+    //         set: function($contrasena){
+    //             return bcrypt($contrasena);
+    //         }
+    //     );
+    // }
 
 
 
