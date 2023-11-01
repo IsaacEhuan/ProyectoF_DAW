@@ -1,5 +1,5 @@
 # ProyectoF_DAW_AS
-Repositorio en el cual se van a ir subiendo los avances del proyecto final de Diseño de Aplicaciones Web y Arquitectura de Software
+Repositorio en el cual se van a ir subiendo los avances del proyecto final de Diseño de Aplicaciones Web y Arquitectura de Software.
 
 <h3 > Isaac Mauricio Ehuan Avila <a href="#">
 </a></h3>
