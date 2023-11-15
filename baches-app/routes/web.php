@@ -89,3 +89,7 @@ Route::get('baches/descargar',[ BachesController::class, 'reporteBaches'] )->nam
 
 
 Route::post('/baches/buscar',[BachesController::class, 'buscarBache'])->name('buscarBache');
+
+Route::get('/usuarios', function(){
+    return 'hola';
+});
