@@ -49,7 +49,7 @@ class PythonLoginP2(unittest.TestCase):
         driver.execute_script("arguments[0].click();",boton)
         time.sleep(3)
         new_url = self.driver.current_url
-        self.assertEqual(self.base_url, new_url)
+        self.assertEqual(self.base_url+"/", new_url)
 
     def test_CP00010_BloqueDeUsuarioPorContraseñaIncorrecta(self):
         driver = self.driver
