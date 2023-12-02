@@ -12,7 +12,7 @@ class PythonLoginP2(unittest.TestCase):
 
     def setUp(self):
         options = Options()
-        s = Service(r"C:\Users\jonat\OneDrive\Documentos\7toSemestre\verificacionValidacionSoftware\proyecto\ProyectoF_DAW\pruebasPython\msedgedriver.exe")
+        s = Service("C:/xampp/htdocs/ProyectoF_DAW/pruebasPython/msedgedriver.exe")
         self.driver = webdriver.Edge(service = s, options = options)
         self.base_url = 'http://127.0.0.1:8000'
 
